@@ -1,0 +1,15 @@
+Я не вполне поняла что требуется в задании.
+
+Если требуется в колонку Tax выводить среднее значение для каждого человека, то запрос будет такой:
+CREATE TABLE t4 AS SELECT InternalNumber, Concat(Name, ' ', Surname) 
+AS 'Name/Surname', Position, Salary/12 as 'Salary/Mounth', 
+sum(Taxes)/count(*) AS Tax, Month FROM t1 
+LEFT JOIN t3 ON t1.ID=t3.EmployeeID 
+LEFT JOIN t2 ON t1.ID=t2.EmployeeID GROUP BY Surname;
+
+Если требуется в колонку Tax выводить значение для каждого месяца, то:
+CREATE TABLE t4 AS SELECT InternalNumber, Concat(Name, ' ', Surname) 
+AS 'Name/Surname', Position, Salary/12 as 'Salary/Mounth', 
+Taxes AS Tax, Month FROM t1 
+LEFT JOIN t3 ON t1.ID=t3.EmployeeID 
+LEFT JOIN t2 ON t1.ID=t2.EmployeeID;
