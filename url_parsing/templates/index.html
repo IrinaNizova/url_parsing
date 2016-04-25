@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "static/style.css" %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+    {% for result in results %}
+        <li><a href="/url/{{ result.id }}">{{ result.url }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
